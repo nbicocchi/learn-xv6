@@ -1,0 +1,6 @@
+This file is used from cron process. modify only through "editor cronfile"
+
+hour	minute	dom	month	dow	command
+20	20	02	12	*	sh
+22	31	*	*	*	prova
+*	*	*	*	*	prova

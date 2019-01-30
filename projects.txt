@@ -1,0 +1,18 @@
+## 2018 ##
+Andrea Baraldi, Scheduler O(1), 4
+Leonardo Cavazzoni Pederzini, ?,
+Nicola Corbo, Double Indirect, 4
+Eleonora Macchioni, Sort, 2
+Federico Mercalli, Shared Memory, 4
+
+
+## 2017 ##
+Marco Fontana, Alternative scheduling algorithms, 4
+Pietro Buzzega, Added PATH to shell and improvements to console, 4
+Federico Campo, Threads and semaphores, 4
+Nicolo Gasparini, Implementation of head and tail commands, 4
+Federico Desimoni, Cron e Crontab, 4
+Sukhjinder Singh, Cat modifed, 1
+Alessio Buttitta, Double indirect inodes, 2
+Francesca Chiara Parenti, Date, 2
+Tommaso Davoli, Command line tools (cmp, echo, pwd, size), 2
