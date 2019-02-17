@@ -1,6 +1,6 @@
 ## 2018 ##
 Andrea Baraldi, Scheduler O(1), 4
-Leonardo Cavazzoni Pederzini, ?,
+Leonardo Cavazzoni Pederzini, XV6 IPC, 4
 Nicola Corbo, Double Indirect, 4
 Eleonora Macchioni, Sort, 2
 Federico Mercalli, Shared Memory, 4
