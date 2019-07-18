@@ -1,40 +1,40 @@
 #!/bin/bash
 
+usage() {
+	echo "usage: $0 -l lab [-s subdir] [-f flags] [-n] [-c]"
+	exit 1
+}
+
 # set initial values
 SUBDIR="end"
 NO_INIT=0
 CLEAN=0
 FLAGS=""
 
-# read options
-TEMP=`getopt -o s:f:ncl: --long subdir:,flags:,no-init,clean,lab: -n $0 -- "$@"`
-eval set -- "$TEMP"
-
-# extract options and their arguments
-while true ; do
-    case "$1" in
-        -s|--subdir)
-            case "$2" in
-                "") shift 2 ;;
-                *) SUBDIR=$2 ; shift 2 ;;
-            esac ;;
-	-f|--flags)
-            case "$2" in
-                "") shift 2 ;;
-                *) FLAGS=$2 ; shift 2 ;;
-            esac ;;
-	-n|--no-init) NO_INIT=1 ; shift ;;
-        -c|--clean) CLEAN=1 ; shift ;;
-        -l|--lab)
-            case "$2" in
-                "") shift 2 ;;
-                *) LAB=$2 ; shift 2;;
-            esac ;;
-
-        --) shift ; break ;;
-        *) echo "Internal error!" ; exit 1 ;;
+while getopts "s:f:ncl:" o; do
+    case "${o}" in
+        s)
+            SUBDIR=${OPTARG}
+            ;;
+        f)
+            FLAGS=${OPTARG}
+            ;;
+        n)
+			NO_INIT=1
+			;;
+		c)
+			CLEAN=1
+			;;
+		l)
+			LAB=${OPTARG}
+			;;
+        *)
+			echo "ciao"
+            usage
+            ;;
     esac
 done
+shift $((OPTIND-1))
 
 if [ "$CLEAN" -eq 1 ]; then
   rm -rf xv6-public-*
@@ -42,7 +42,7 @@ if [ "$CLEAN" -eq 1 ]; then
 fi
 
 if [ -z "$LAB" ]; then
-  echo "usage: $0 --lab lab [--subdir subdir] [--flags flags] [--no-init] [--clean]"
+  usage
   exit 1
 fi
 

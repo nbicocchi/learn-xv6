@@ -87,9 +87,10 @@ For running xv6:
 * Increasing the maximum file lenght using single indirection (70K -> 200K)
 * Implementing a user command for testing maximum allowed size
 
-[10K] File System (Double indirect)
+[10K] File System (Multiple indirect)
 
-* Increasing the maximum file lenght using double indirection (70K -> ...)
+* Increasing the maximum file lenght using double indirection
+* Increasing the maximum file lenght using triple indirection
 
 ## Course Rules ##
 For their project, students can choose any topic about xv6 they like.
