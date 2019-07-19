@@ -1,24 +1,12 @@
 # Operating Systems MSc (DIEF, UNIMORE) #
 This course deals with the design and implementation of operating systems. 
-The topics include the bootup sequence, memory management, processes, interrupt handling, file systems, 
-synchronization, inter process communication in modern operating systems. 
+The topics include the bootup sequence, memory management, processes, interrupt handling, file systems, synchronization, inter process communication in modern operating systems. 
 The course is built on the xv6 operating system.
-
-
-## How to use it ##
-The whole material, comprising slides and code examples, can be downloaded using git:
-
-* git clone https://github.com/nbicocchi/operatingsystemsmsc.git
-
-Both slides and code examples might be updated or bug-fixed during the course. At any time, for downloading the
-latest version, go the course material directory (on your pc) and use:
-
-* $ git pull
 
 
 ## xv6 ##
 Xv6 is a teaching operating system developed in the summer of 2006 for MIT's operating systems course, 6.828: Operating System Engineering. 
-We use it because of its beauty and simplicity. To successfully run it, you need to install some packages (tested on Ubuntu 16):
+We use it because of its beauty and simplicity. To successfully run it, you need to install some packages (tested on Ubuntu 18.04):
 
 * $ sudo apt-get install git qemu build-essential 
 
@@ -31,7 +19,31 @@ For running xv6:
 * $ cd xv6-public
 * $ make
 * $ make qemu-nox
+* (for quitting the emulator) ctrl-a x
 
+
+## Course material ##
+The whole material, comprising slides and code examples, can be downloaded using git:
+
+* git clone https://github.com/nbicocchi/operatingsystemsmsc.git
+
+Both slides and code examples might be updated or bug-fixed during the course. At any time, for downloading the latest version, go the course material directory (on your pc) and use:
+
+* $ git pull
+
+
+## Running labs ##
+The course is basically organized around a number of fully working patches for xv6. They are organized within the /code/ and /code/opt/ folders. Each folder has its own README.md file as documentation and contains only the files that have been modified from the stock xv6. For running pathes the script generate.sh has been provided.
+
+```
+usage: ./generate.sh -l lab [-s subdir] [-f flags] [-n] [-c]
+This tool creates a copy of xv6-public/, patches it with a selected lab folder and excutes the qemu emulator
+-l The lab to be built
+-s The subdir (withitn each lab) to be built. Default=end
+-f Flags to be passed to the compiler. Default=none
+-n Avoid the creation of a new copy of xv6-public/. Useful for development. Default=false
+-c Clean all patched copies of xv6
+```
 
 ## Modules ##
 [01U] Basic commands
@@ -99,7 +111,7 @@ within the kernel.
 
 The project has to be delivered in the same format of labs (see code/). The command: 
 
-$ ./generate.sh --lab your_project_dir 
+$ ./generate.sh -l your_project_dir 
 
 must generate a modified (and working!) version of xv6. The discussion will start from there.
 

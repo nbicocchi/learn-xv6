@@ -2,6 +2,12 @@
 
 usage() {
 	echo "usage: $0 -l lab [-s subdir] [-f flags] [-n] [-c]"
+	echo "This tool creates a copy of xv6-public/, patches it with a selected lab folder and excutes the qemu emulator"
+	echo "-l The lab to be built"
+	echo "-s The subdir (withitn each lab) to be built. Default=end"
+	echo "-f Flags to be passed to the compiler. Default=none"
+	echo "-n Avoid the creation of a new copy of xv6-public/. Useful for development. Default=false"
+	echo "-c Clean all patched copies of xv6"
 	exit 1
 }
 
@@ -13,7 +19,7 @@ FLAGS=""
 
 while getopts "s:f:ncl:" o; do
     case "${o}" in
-        s)
+        s|subdir)
             SUBDIR=${OPTARG}
             ;;
         f)
