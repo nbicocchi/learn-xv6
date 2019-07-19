@@ -37,11 +37,11 @@ The course is basically organized around a number of fully working patches for x
 
 ```
 usage: ./generate.sh -l lab [-s subdir] [-f flags] [-n] [-c]
-This tool creates a copy of xv6-public/, patches it with a selected lab folder and excutes the qemu emulator
--l The lab to be built
+This tool creates a copy of xv6-public/, patches it with a selected lab folder, and excutes the qemu emulator
+-l The lab to be built and executed
 -s The subdir (withitn each lab) to be built. Default=end
 -f Flags to be passed to the compiler. Default=none
--n Avoid the creation of a new copy of xv6-public/. Useful for development. Default=false
+-n Skip the creation of a copy of xv6-public/ and patching. Useful for development. Default=false
 -c Clean all patched copies of xv6
 ```
 
