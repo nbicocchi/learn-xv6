@@ -26,16 +26,15 @@ while getopts "s:f:ncl:" o; do
             FLAGS=${OPTARG}
             ;;
         n)
-			NO_INIT=1
-			;;
-		c)
-			CLEAN=1
-			;;
-		l)
-			LAB=${OPTARG}
-			;;
+	    NO_INIT=1
+	    ;;
+	c)
+	    CLEAN=1
+	    ;;
+	l)
+	    LAB=${OPTARG}
+	    ;;
         *)
-			echo "ciao"
             usage
             ;;
     esac
@@ -61,7 +60,6 @@ if [ $NO_INIT -eq 0 ]; then
 fi
 
 cd "$DST"
-
 if [ -z "$FLAGS" ]; then
   make qemu-nox
 else
