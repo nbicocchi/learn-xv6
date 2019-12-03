@@ -373,37 +373,80 @@ iunlockput(struct inode *ip)
 static uint
 bmap(struct inode *ip, uint bn)
 {
-  uint indirect_block;
   uint addr, *a;
   struct buf *bp;
+
+  uint maxsize = ((NINDIRECTIB * NINDIRECTIB) * NINDIRECT + NDIRECTIB * NINDIRECTIB + NDIRECTIB);
+  uint index, index2, offset, offset2;			//If triple indirect is composed by one indirect block, they are not necessary
 
   if(bn < NDIRECT){
     if((addr = ip->addrs[bn]) == 0)
       ip->addrs[bn] = addr = balloc(ip->dev);
     return addr;
   }
+
   bn -= NDIRECT;
 
-  indirect_block = 0;
-  while (bn >= NINDIRECT) {
-    indirect_block++;
-    bn -= NINDIRECT;
-  }
+  if(bn < maxsize){			//Triple indirect
+    // Load indirect block, allocating if necessary.
+    if((addr = ip->addrs[NDIRECT]) == 0)				//first level
+      ip->addrs[NDIRECT] = addr = balloc(ip->dev);
+    bp = bread(ip->dev, addr);
+    a = (uint*)bp->data;
+    
+    if(bn < NDIRECTIB){
+      if((addr = a[bn]) == 0){
+        a[bn] = addr = balloc(ip->dev);
+        log_write(bp);
+      }
+      brelse(bp);
+      return addr;
+    }
 
-  if (indirect_block >= MAXINDIRECT) 
-    panic("bmap: out of range");
+    bn -= NDIRECTIB;
+    index = bn / (NINDIRECT * NINDIRECTIB + NDIRECTIB); 
+    offset = bn % (NINDIRECT * NINDIRECTIB + NDIRECTIB);
 
-  // Load indirect block, allocating if necessary.
-  if((addr = ip->addrs[NDIRECT + indirect_block]) == 0)
-    ip->addrs[NDIRECT + indirect_block] = addr = balloc(ip->dev);
-  bp = bread(ip->dev, addr);
-  a = (uint*)bp->data;
-  if((addr = a[bn]) == 0){
-    a[bn] = addr = balloc(ip->dev);
-    log_write(bp);
+    if((addr = a[NDIRECTIB + index]) == 0){				// second level
+      a[NDIRECTIB + index] = addr = balloc(ip->dev);
+      log_write(bp);
+    }
+    brelse(bp);
+
+    bp = bread(ip->dev, addr);
+    a = (uint*) bp->data;
+
+    if(offset < NDIRECTIB){
+      if((addr = a[offset]) == 0){
+        a[offset] = addr = balloc(ip->dev);
+        log_write(bp);
+      }
+      brelse(bp);
+      return addr;
+    }
+
+    index2 = (offset - NDIRECTIB) / NINDIRECT;
+    bn = offset2 = offset % NINDIRECT;
+
+    if((addr = a[NDIRECTIB + index2]) == 0){				//third level
+      a[NDIRECTIB + index2] = addr = balloc(ip->dev);
+      log_write(bp);
+    }
+    brelse(bp);
+
+    bp = bread(ip->dev, addr);
+    a = (uint*) bp->data;
+
+    if(bn < NINDIRECT){
+      if((addr = a[bn]) == 0){
+        a[bn] = addr = balloc(ip->dev);
+        log_write(bp);
+      }
+    }
+    brelse(bp);
+    return addr;
   }
-  brelse(bp);
-  return addr;
+  panic("bmap: out of range");
 }
 
 // Truncate inode (discard contents).

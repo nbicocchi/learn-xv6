@@ -6,7 +6,7 @@
 
 int main() {
   char buf[512];
-  int fd, i, sectors = 0;
+  int fd, i, blocks = 0;
 
   fd = open("big.file", O_CREATE | O_WRONLY);
   if(fd < 0){
@@ -17,15 +17,15 @@ int main() {
   memset(buf, 0, sizeof(buf));
 
   /* writing section */
-  printf(1, "Writing");
+  printf(1, "Write |");
   while(1) {
-    *(int*)buf = sectors;
+    *(int*)buf = blocks;
     int cc = write(fd, buf, sizeof(buf));
     if(cc <= 0) break;
 
-    if (sectors++ % 10 == 0) printf(1, ".");
+    if (blocks++ % 10 == 0) printf(1, "w");
   }
-  printf(1, " %d sectors [write]\n", sectors);
+  printf(1, "| blocks=%d, bytes=%dK\n", blocks, blocks*BSIZE/1024);
   close(fd);
 
   /* reading section */
@@ -35,8 +35,8 @@ int main() {
     exit();
   }
 
-  printf(1, "Reading");
-  for(i = 0; i < sectors; i++){
+  printf(1, "Verify|");
+  for(i = 0; i < blocks; i++){
     int cc = read(fd, buf, sizeof(buf));
     if(cc <= 0){
       printf(2, "error: read error at sector %d\n", i);
@@ -47,9 +47,9 @@ int main() {
       printf(2, "error: read the wrong data (%d) for sector %d\n", *(int*)buf, i);
       exit();
     }
-    if (i % 10 == 0) printf(1, ".");
+    if (i % 10 == 0) printf(1, "v");
   }
-  printf(1, " %d sectors [read]\n", i);
+  printf(1, "| blocks=%d, bytes=%dK\n", blocks, blocks*BSIZE/1024);
   close(fd);
 
   exit();
