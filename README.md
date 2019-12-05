@@ -33,7 +33,7 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 
 
 ## Running labs ##
-The course is basically organized around a number of fully working patches for xv6. They are organized within the /code/ and /code/opt/ folders. Each folder has its own README.md file as documentation and contains only the files that have been modified from the stock xv6. For running pathes the script generate.sh has been provided.
+The course is basically organized around a number of fully working patches for xv6. They are organized within the /code/ and /code/opt/ folders. Each folder has its own README.md file as documentation and contains only the files that have been modified from xv6 stock. For running patches the script generate.sh please use provided.
 
 ```
 usage: ./generate.sh -l lab [-s subdir] [-f flags] [-n] [-c]
@@ -94,20 +94,19 @@ This tool creates a copy of xv6-public/, patches it with a selected lab folder, 
 * Implementing "lazy allocation" within the sbrk() system call
 * Intercepting a PAGE FAULT trap for allocating missing memory pages
 
-[09K] File System (Single indirect)
+[09K] File System (Stats)
 
-* Increasing the maximum file lenght using single indirection (70K -> 200K)
-* Implementing a user command for testing maximum allowed size
+* Implementing a system call for acquiring fs-related statistics (superblock/bitmap)
+* Implementing a user command for display statistics
 
-[10K] File System (Multiple indirect)
+[10K] File System (Single/Double/Triple indirection)
 
-* Increasing the maximum file lenght using double indirection
-* Increasing the maximum file lenght using triple indirection
+* Increasing the maximum file length using a modified single indirection
+* Increasing the maximum file length using double indirection
+* Increasing the maximum file length using triple indirection
 
 ## Course Rules ##
-For their project, students can choose any topic about xv6 they like.
-As an inspiration it is possible to implement an improved shell, missing user commands, or new/better functionalities
-within the kernel.
+For their project students can choose any topic about xv6 they like. As an inspiration, it is possible to implement an improved shell, missing user commands, or new/better functionalities within the kernel.
 
 The project has to be delivered in the same format of labs (see code/). The command: 
 
