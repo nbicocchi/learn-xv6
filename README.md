@@ -1,12 +1,10 @@
 # Operating Systems MSc (DIEF, UNIMORE) #
 This course deals with the design and implementation of operating systems. 
-The topics include the bootup sequence, memory management, processes, interrupt handling, file systems, synchronization, inter process communication in modern operating systems. 
-The course is built on the xv6 operating system.
+The main topics include: boot-up sequence, memory management, processes, file systems and inter process communication in modern operating systems. The course is based on the Xv6 operating system.
 
 
 ## xv6 ##
-Xv6 is a teaching operating system developed in the summer of 2006 for MIT's operating systems course, 6.828: Operating System Engineering. 
-We use it because of its beauty and simplicity. To successfully run it, you need to install some packages (tested on Ubuntu 18.04):
+Xv6 is a teaching operating system developed in the summer of 2006 for MIT's operating systems course, 6.828: Operating System Engineering. We use it because of its beauty and simplicity. To successfully run it, you need to install some packages (tested on Ubuntu 18.04):
 
 * $ sudo apt-get install git qemu build-essential 
 
@@ -33,7 +31,7 @@ Both slides and code examples might be updated or bug-fixed during the course. A
 
 
 ## Running labs ##
-The course is basically organized around a number of fully working patches for xv6. They are organized within the /code/ and /code/opt/ folders. Each folder has its own README.md file as documentation and contains only the files that have been modified from xv6 stock. For running patches the script generate.sh please use provided.
+The course is organized around a number of patches for xv6. They are placed within the /code/ and /code/opt/ folders. Each patch has its own README.md for documentation and contains only the files that have been modified from xv6 stock. For running patches the script generate.sh can be used as described below.
 
 ```
 usage: ./generate.sh -l lab [-s subdir] [-f flags] [-n] [-c]
@@ -112,7 +110,7 @@ The project has to be delivered in the same format of labs (see code/). The comm
 
 $ ./generate.sh -l your_project_dir 
 
-must generate a modified (and working!) version of xv6. The discussion will start from there.
+must generate a modified (and working!) version of xv6.
 
 
 ## Course Books ##
