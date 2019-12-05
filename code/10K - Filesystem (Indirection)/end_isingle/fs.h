@@ -21,10 +21,10 @@ struct superblock {
   uint bmapstart;    // Block number of first free map block
 };
 
-#define NDIRECT 9
+#define NDIRECT 10
 #define NINDIRECT (BSIZE / sizeof(uint))
 
-#define MAXINDIRECT 4
+#define MAXINDIRECT 3
 #define MAXFILE (NDIRECT + MAXINDIRECT * NINDIRECT)
 
 // On-disk inode structure
