@@ -86,7 +86,7 @@ The lottery scheduling represents a randomized resource allocation mechanism whi
 
 To check if a process wins the lottery we have to see if its number of tickets is higher than the number extracted (the number is randomly extracted in the range [0 , sum of all tickets)), if it is not we will sum its number of tickets to the number of tickets of the next process, check again etc. until the sum of the tickets becomes higher than the chosen number, then that process will be the lottery winner. For example:
 
-![Lottery Example](\images\lotteryexample.png)
+![Lottery Example](images/lotteryexample.png)
 
 
  ```
@@ -104,7 +104,7 @@ Check Process 3: (10 + 2 + 5) > 15? Yes, then Process 3 wins the lottery!
 
  ```
 
-For further informations about how the lottery scheduling works there is an useful [paper]( https://www.usenix.org/legacy/publications/library/proceedings/osdi/full_papers/waldspurger.pdf ) (from which the previous example has been taken).
+For further informations about how the lottery scheduling works there is an useful [paper]( papers/waldspurger.pdf ) (from which the previous example has been taken).
 The probability for a process to win the lottery grows with its number of tickets, and that number can change only via the ```ticket``` command.
 Since the algorithm is full of random features the arrival time of each process is not predictable as it could be done for other scheduling algorithms.
 
