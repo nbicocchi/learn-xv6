@@ -21,10 +21,10 @@ If the flag isn't defined at launch, then DEFAULT (Round-Robin policy) is used.
 ## Polices
 
 * [DEFAULT](#default) - Round-Robin algorithm (stock xv6)
-* [PRIORITY](#priority) - Priority based algorithm
 * [FCFS](#fcfs) - First Come First Served algorithm
-* [CFS](#cfs) - Completely Fair Scheduling algorithm 
+* [PRIORITY](#priority) - Priority based algorithm
 * [SML](#sml) - Static Multi Level Queue algorithm
+* [CFS](#cfs) - Completely Fair Scheduling algorithm 
 * [LOTTERY](#lottery) - Lottery Scheduling algorithm
 
 ### DEFAULT - Round Robin
@@ -35,6 +35,15 @@ The job is resumed next time a time slot is assigned to that process.
 If the process terminates or changes its state to waiting during its attributed time quantum, the scheduler selects the first process in the ready queue to execute. 
 In the absence of time-sharing, or if the quanta were large relative to the sizes of the jobs, a process that produced large jobs would be favoured over other processes.
 Round-robin scheduling is simple, easy to implement, and starvation-free.
+
+### FCFS - First Come First Served
+
+First come first served (FCFS), is the simplest scheduling algorithm. FCFS simply queues processes in the order that they arrive in the ready queue. 
+The scheduling overhead due to using this policy is minimal since context switches only occur upon process termination, and no reorganization of the process queue is required.
+Throughput can be low, because long processes can be holding CPU, waiting the short processes for a long time, so short processes which are in a queue are penalized over the longer ones (known as convoy effect).
+By using this policy we have no starvation, because each process gets chance to be executed after a definite time.
+There isn't prioritization, so using this policy we cannot force certain processes to be completed first which means that this system has trouble meeting process deadlines. The lack of prioritization means that as long as every process eventually completes, there is no starvation. 
+In an environment where some processes might not complete, there can be starvation since the processes that come next the one which might not complete are never executed.
 
 ### PRIORITY - Priority based
 
@@ -48,20 +57,6 @@ int setpriority(int pid, int priority)
 ```
 
 In this case ```priority``` is a number between 1 and 20 which represents the new process priority.
-
-### FCFS - First Come First Served
-
-First come first served (FCFS), is the simplest scheduling algorithm. FCFS simply queues processes in the order that they arrive in the ready queue. 
-The scheduling overhead due to using this policy is minimal since context switches only occur upon process termination, and no reorganization of the process queue is required.
-Throughput can be low, because long processes can be holding CPU, waiting the short processes for a long time, so short processes which are in a queue are penalized over the longer ones (known as convoy effect).
-By using this policy we have no starvation, because each process gets chance to be executed after a definite time.
-There isn't prioritization, so using this policy we cannot force certain processes to be completed first which means that this system has trouble meeting process deadlines. The lack of prioritization means that as long as every process eventually completes, there is no starvation. 
-In an environment where some processes might not complete, there can be starvation since the processes that come next the one which might not complete are never executed.
-
-### CFS - Completely Fair Scheduling
-
-Always run the runnable process with the minimum running time. 
-...
 
 ### SML - Static Multi Level Queue
 
@@ -79,6 +74,10 @@ int setpriority(int pid, int priority)
 
 In this case ```priority``` is a number between 1 and 20 which represents the new process priority.
 
+### CFS - Completely Fair Scheduling
+
+This scheduler tries to be fair with all processes by giving them fair chance to execute on processor. Idea is simple. Keep track of time a process has executed on processor, processes which have got small amount of time are boosted to get the processor, those who got bigger amount of time are thwarted. [Linux Journal]( https://www.linuxjournal.com/node/10267 )
+
 ### LOTTERY - Lottery Scheduler
 
 #### Author: Lorenzo Del Rossi
@@ -91,10 +90,7 @@ Each process has a number of *lottery tickets* and then the scheduler draws a ra
 
 To check if a process wins the lottery we have to see if its number of tickets is higher than the number extracted (the number is randomly extracted in the range [0 , sum of all tickets)), if it is not we will sum its number of tickets to the number of tickets of the next process, check again etc. until the sum of the tickets becomes higher than the chosen number, then that process will be the lottery winner. For example:
 
-
-
 ![Lottery Example](\images\lotteryexample.png)
-
 
 
  ```
@@ -135,22 +131,3 @@ In this example the number of tickets of the process P with PID(P) = 2 will be s
 Currently the maximum number of tickets is set to 20 in order to take the total number of tickets low without losing the non-uniform ticket distribution, allowing the scheduler to be faster when finding the *lottery winner*.
 
 The more the maximum number of tickets per process is set, the more the scheduler will have a random behavior when finding the process to run thanks to the higher variance of the tickets distribution, but the scheduling process will be slower.
-
-#### Testing the lottery scheduler
-
-To test the scheduler's behavior it has been written the ```test_lottery``` command, it is similar to the ```test_scheduler``` command , but adapted to the lottery-based scheduling.
-
-In order to run properly the lottery scheduling test only 2 parameters (```nsubprocess``` and ```nsteps ```) are needed instead of the 3 parameters needed in ```test_scheduler``` (```nsubprocess```, ```nsteps``` and ```priority```) since it is preferable to set all the subprocesses with a different number of tickets, and that random setting is implicit in the ```allocproc``` function. So to run a test with 5 subprocesses composed by 400000 steps the command is:
-
-```
-test_lottery 5 400000
-```
-
-Furthermore it has been written the ```pstic``` command, that is similar to the ```ps``` command, but it shows the number of tickets of the processes instead of their priority.
-
-In order to run the above mentioned test holding at the same time the shell the command is:
-```
-test_lottery 5 400000 &
-```
-
-

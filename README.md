@@ -76,10 +76,10 @@ This tool creates a copy of xv6-public/, patches it with a selected lab folder, 
 
 [06K] Scheduler (Policies)
 
-* Implementing scheduling policies (DEFAULT, PRIORITY, FCFS, SML)
+* Implementing scheduling policies (DEFAULT, PRIORITY, FCFS, SML, CFS, LOTTERY)
 * Implementing a unique scheduler() function supporting different policies
 * Implementing additional kernel utilities (statitics, random)
-* Implementing an advanced version of ps showing process statistics
+* Implementing an advanced version of ps showing more process information
 
 [07K] Memory (Exec shebang)
 
