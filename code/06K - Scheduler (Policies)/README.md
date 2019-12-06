@@ -13,7 +13,7 @@ $ make qemu-nox SCHEDPOLICY=POLICY
 or
 
 ```
-$ generate.sh --lab labn --flags SCHEDPOLICY=POLICY
+$ generate.sh -l patchname --flags SCHEDPOLICY=POLICY
 ```
 
 If the flag isn't defined at launch, then DEFAULT (Round-Robin policy) is used.
@@ -82,11 +82,7 @@ This scheduler tries to be fair with all processes by giving them fair chance to
 
 #### Author: Lorenzo Del Rossi
 
-The lottery scheduling represents a randomized resource allocation mechanism which avoids the problem of starvation.
-
-#### How Lottery Scheduler works
-
-Each process has a number of *lottery tickets* and then the scheduler draws a random ticket number and the process which has the winner ticket will run until the next extraction.
+The lottery scheduling represents a randomized resource allocation mechanism which avoids the problem of starvation. Each process has a number of *lottery tickets* and then the scheduler draws a random ticket number and the process which has the winner ticket will run until the next extraction.
 
 To check if a process wins the lottery we have to see if its number of tickets is higher than the number extracted (the number is randomly extracted in the range [0 , sum of all tickets)), if it is not we will sum its number of tickets to the number of tickets of the next process, check again etc. until the sum of the tickets becomes higher than the chosen number, then that process will be the lottery winner. For example:
 
