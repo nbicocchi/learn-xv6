@@ -14,6 +14,7 @@ int main(int argc, char *argv[]){
     exit();
   }
   
+
   printf(1, "PID\tPPID\tPRI\tMEM\tSTATE\t\tCMD\n");
   for(p = ptable; p != &ptable[NPROC-1]; p++) {      
         if (p->state == UNUSED) continue;

@@ -32,4 +32,5 @@ SYSCALL(uptime)
 SYSCALL(getptable)
 SYSCALL(getppid)
 SYSCALL(setpriority)
+SYSCALL(settickets)
 

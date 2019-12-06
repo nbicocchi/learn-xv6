@@ -20,6 +20,14 @@ extern void trapret(void);
 
 static void wakeup1(void *chan);
 
+// Random Number Generator
+static
+unsigned long
+lcg_rand(unsigned long a)
+{
+  return (a * 279470273UL) % 4294967291UL;
+}
+
 void
 pinit(void)
 {
@@ -89,6 +97,7 @@ found:
   p->state = EMBRYO;
   p->pid = nextpid++;
   p->priority = 10;
+  p->ntickets = random(ticks % MAX_TICKETS) + 1; // +1 to avoid 0 ticket allocation
   p->ctime = ticks;
   p->stime = 0;
   p->retime = 0;
@@ -556,6 +565,7 @@ getptable(int nproc, int size, char *buffer){
     p_dst->ppid = p_src->parent->pid;
     memmove(p_dst->name, p_src->name, 16);
     p_dst->priority = p_src->priority;
+    p_dst->ntickets = p_src->ntickets;
     p_dst->ctime = p_src->ctime;
     p_dst->stime = p_src->stime;
     p_dst->retime = p_src->retime;
@@ -583,6 +593,38 @@ setpriority(int pid, int priority)
   release(&ptable.lock);
 
   return pid;
+}
+
+// Change Process Number of Tickets
+int
+settickets(int pid, int tickets)
+{
+  struct proc *p;
+  
+  acquire(&ptable.lock);
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if(p->pid == pid) {
+        p->ntickets = tickets;
+        break;
+    }
+  }
+  release(&ptable.lock);
+
+  return pid;
+}
+
+
+//----------------Lottery Total------------------------
+int lotteryTotal(void){
+  struct proc *p;
+  int total_tickets=0;
+
+  for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+    if(p->state==RUNNABLE){
+      total_tickets+=p->ntickets;
+    }
+  }
+  return total_tickets;
 }
 
 // Run every clock tick and update the statistic fields of each process
@@ -745,6 +787,36 @@ struct proc *ready_process() {
   }
 
   return 0;
+}
+#endif
+
+#ifdef LOTTERY
+struct proc *ready_process() {
+  struct proc *p, *pcandidate = 0;
+  int total_tickets = 0;
+  int chosen;
+    //if there's no available tickets, there's no winner
+    total_tickets = lotteryTotal();
+    if(total_tickets > 0){
+      //Finds the winner by LCG random
+      chosen = lcg_rand(lcg_rand(ticks));
+      if(total_tickets < chosen){
+        chosen %= total_tickets;  //Chosen is in the interval of tickets
+      }
+      // Loop over process table looking for process to run
+      for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+        if(p->state == RUNNABLE){
+          chosen-=p->ntickets;
+          pcandidate = p;
+        }
+        //If the process is not the winner we have to test another process
+        if(p->state !=RUNNABLE || chosen >= 0){
+            continue;
+        }
+      }
+      return pcandidate;
+}
+return 0;
 }
 #endif
 

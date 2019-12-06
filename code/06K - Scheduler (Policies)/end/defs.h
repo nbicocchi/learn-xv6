@@ -122,11 +122,13 @@ void            wakeup(void*);
 void            yield(void);
 int             getptable(int, int, char *);
 int             setpriority(int, int);
-int             chtickets(int, int);
 void            update_statistics(void);
 int             random(int);
-int             total_tickets(void);
 struct proc*    ready_process(void);
+int             settickets(int, int);
+static unsigned long lcg_rand(unsigned long);
+int             lotteryTotal(void);
+
 
 // swtch.S
 void            swtch(struct context**, struct context*);

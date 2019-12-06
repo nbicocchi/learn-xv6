@@ -130,3 +130,17 @@ sys_setpriority(void)
 
   return setpriority(pid, priority);
 }
+
+int
+sys_settickets(void)
+{
+    int pid, tickets;
+
+  if(argint(0, &pid) < 0)
+    return -1;
+
+  if(argint(1, &tickets) < 0)
+    return -1;
+
+  return settickets(pid, tickets);
+}

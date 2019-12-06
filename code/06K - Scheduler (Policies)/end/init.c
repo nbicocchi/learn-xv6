@@ -4,6 +4,8 @@
 #include "stat.h"
 #include "user.h"
 #include "fcntl.h"
+#include "param.h"
+
 
 char *argv[] = { "sh", 0 };
 
@@ -13,6 +15,7 @@ main(void)
   int pid, wpid;
 
   setpriority(getpid(), 1);
+  settickets(getpid(), MAX_TICKETS);
 
   if(open("console", O_RDWR) < 0){
     mknod("console", 1, 1);
@@ -35,6 +38,10 @@ main(void)
   #else
   #ifdef CFS
     printf(1, "Scheduler policy: CFS\n");
+  #else
+  #ifdef LOTTERY
+    printf(1, "Scheduler policy: LOTTERY\n");
+  #endif 
   #endif
   #endif
   #endif

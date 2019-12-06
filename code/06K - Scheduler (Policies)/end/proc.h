@@ -54,6 +54,7 @@ struct proc {
   int stime;                   // Process SLEEPING time
   int retime;                  // Process READY(RUNNABLE) time
   int rutime;                  // Process RUNNING time
+  int ntickets;                // Process number of tickets 
 };
 
 // Per-process state (simplified version for user space)
@@ -68,6 +69,7 @@ struct proc_us {
   int stime;                   // Process SLEEPING time
   int retime;                  // Process READY(RUNNABLE) time
   int rutime;                  // Process RUNNING time
+  int ntickets;                // Process number of tickets
 };
 
 // Process memory is laid out contiguously, low addresses first:

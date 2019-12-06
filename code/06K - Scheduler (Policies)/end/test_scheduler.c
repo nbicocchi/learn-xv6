@@ -3,13 +3,14 @@
 #include "user.h"
 #include "fcntl.h"
 
+
 int main(int argc, char *argv[]) {
-  int pid;
+   int pid;
   int k, nprocess;
   int z, steps;
   int priority;
   char buffer_src[1024], buffer_dst[1024];
-
+  
   if (argc != 4) {
     printf(2, "usage: %s nsubprocess nsteps priority\n", argv[0]);
     exit();

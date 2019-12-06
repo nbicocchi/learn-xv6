@@ -23,3 +23,4 @@
 #define SYS_getptable   22
 #define SYS_getppid     23
 #define SYS_setpriority 24
+#define SYS_settickets 25
