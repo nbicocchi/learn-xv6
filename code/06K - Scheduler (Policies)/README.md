@@ -76,7 +76,7 @@ In this case ```priority``` is a number between 1 and 20 which represents the ne
 
 ### CFS - Completely Fair Scheduling
 
-This scheduler tries to be fair with all processes by giving them fair chance to execute on processor. Idea is simple. Keep track of time a process has executed on processor, processes which have got small amount of time are boosted to get the processor, those who got bigger amount of time are thwarted. [Linux Journal]( https://www.linuxjournal.com/node/10267 )
+This scheduler tries to be fair with all processes by giving them fair chance to execute on processor. Idea is simple. Keep track of time a process has executed on processor, processes which have got small amount of time are boosted to get the processor, those who got bigger amount of time are thwarted. See [Linux Journal]( https://www.linuxjournal.com/node/10267 ).
 
 ### LOTTERY - Lottery Scheduler
 
