@@ -173,8 +173,7 @@ In the second part, we must handle this TRAP 14. Every time a page fault (TRAP 1
     // to by mem with the constant byte 0. init allocated page
     memset(mem, 0, PGSIZE); 
 
-    // create PTE and map page to PGDIR map virtual memory to physical address 
-    // round the faulting virtual address down to a multiple of page boundary
+    // Round the faulting virtual address down to a multiple of page boundary so that they become aligned
     uint a = PGROUNDDOWN(rcr2()); 
     
     // map the page into the process page table kernel. Kernel uses virtual 
