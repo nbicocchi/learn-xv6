@@ -2,6 +2,8 @@
 Christian Gilli, XV6 remote monitoring, 4
 Davide Iavicoli, Runtime scheduler selection, 4
 Lorenzo Del Rossi, Lottery Scheduler, 4
+Davide Zini, Scheduler Test, 4
+Biagio Ferri, Scheduler Test, 4
 Giacomo Capitani, Scheduler SML (aperioric processes support), ?
 
 ## 2018 ##
