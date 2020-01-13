@@ -4,6 +4,7 @@ Davide Iavicoli, Runtime scheduler selection, 4
 Lorenzo Del Rossi, Lottery Scheduler, 4
 Davide Zini, Scheduler Test, 4
 Biagio Ferri, Scheduler Test, 4
+Marco Malagoli, File system checksum, 4
 Fabio Leonardi, Scheduler MLFQ, 2
 Giacomo Capitani, Scheduler SML (aperioric processes support), ?
 
