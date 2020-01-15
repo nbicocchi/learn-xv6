@@ -3,9 +3,10 @@ Christian Gilli, XV6 remote monitoring, 4
 Davide Iavicoli, Runtime scheduler selection, 4
 Lorenzo Del Rossi, Lottery Scheduler, 4
 Davide Zini, Scheduler Test, 4
-Biagio Ferri, Scheduler Test, 4
+Biagio Ferri, Scheduler Test(Thread), 4
 Marco Malagoli, File system checksum, 4
-Fabio Leonardi, Scheduler MLFQ, 2
+Fabio Leonardi, Scheduler MLFQ, 3
+Jacopo Scannella, XV6 Disassembler, 4
 Giacomo Capitani, Scheduler SML (aperioric processes support), ?
 
 ## 2018 ##

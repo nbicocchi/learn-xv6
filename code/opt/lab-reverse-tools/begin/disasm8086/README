@@ -1,0 +1,5 @@
+Simple disassembler for 8086 COM files written in C
+
+Not fully tested
+
+Code licensed under GPLv2 terms.
