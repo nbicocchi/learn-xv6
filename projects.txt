@@ -6,8 +6,9 @@ Davide Zini, Scheduler Test, 4
 Biagio Ferri, Scheduler Test(Thread), 4
 Marco Malagoli, File system checksum, 4
 Fabio Leonardi, Scheduler MLFQ, 3
+Luca Casarin, Scheduler DML, 3
+Giacomo Capitani, Scheduler SML (aperioric support), ?
 Jacopo Scannella, XV6 Disassembler, 4
-Giacomo Capitani, Scheduler SML (aperioric processes support), ?
 
 ## 2018 ##
 Andrea Baraldi, Scheduler O(1), 4
