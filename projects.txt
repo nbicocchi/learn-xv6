@@ -9,6 +9,10 @@ Fabio Leonardi, Scheduler MLFQ, 3
 Luca Casarin, Scheduler DML, 3
 Giacomo Capitani, Scheduler SML (aperioric support), ?
 Jacopo Scannella, XV6 Disassembler, 4
+Camilla Memola, Tree command, 3
+Claudia de Michele, Disk cache paging, 4
+D'Iorio Rosa, Disk cache paging, 4
+Fabio Leanti, history e man, 3
 
 ## 2018 ##
 Andrea Baraldi, Scheduler O(1), 4
