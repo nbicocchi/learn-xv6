@@ -7,7 +7,7 @@ Biagio Ferri, Scheduler Test(Thread), 4
 Marco Malagoli, File system checksum, 4
 Fabio Leonardi, Scheduler MLFQ, 3
 Luca Casarin, Scheduler DML, 3
-Giacomo Capitani, Scheduler SML (aperioric support), ?
+Giacomo Capitani, ML Feedback Queue, 3
 Jacopo Scannella, XV6 Disassembler, 4
 Camilla Memola, Tree command, 3
 Claudia de Michele, Disk cache paging, 4
