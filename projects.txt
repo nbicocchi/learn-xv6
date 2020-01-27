@@ -5,14 +5,15 @@ Lorenzo Del Rossi, Lottery Scheduler, 4
 Davide Zini, Scheduler Test, 4
 Biagio Ferri, Scheduler Test(Thread), 4
 Marco Malagoli, File system checksum, 4
-Fabio Leonardi, Scheduler MLFQ, 3
-Luca Casarin, Scheduler DML, 3
-Giacomo Capitani, ML Feedback Queue, 3
 Jacopo Scannella, XV6 Disassembler, 4
-Camilla Memola, Tree command, 3
 Claudia de Michele, Disk cache paging, 4
 D'Iorio Rosa, Disk cache paging, 4
+Giacomo Capitani, ML Feedback Queue, 3
+Camilla Memola, Tree command, 3
 Fabio Leanti, history e man, 3
+Fabio Leonardi, Scheduler MLFQ, 3
+Luca Casarin, Scheduler DML, 3
+Mattia Masella, Disk cache paging, 2
 
 ## 2018 ##
 Andrea Baraldi, Scheduler O(1), 4
