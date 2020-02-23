@@ -14,6 +14,7 @@ Fabio Leanti, history e man, 3
 Fabio dal Col, man, 3
 Fabio Leonardi, Scheduler MLFQ, 3
 Luca Casarin, Scheduler DML, 3
+Valentina Neri, dd command, 3
 Mattia Masella, Disk cache paging, 2
 
 ## 2018 ##

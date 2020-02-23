@@ -1,0 +1,46 @@
+dd is a command of the Unix and Unix-like operating systems, more generally of the POSIX systems, which copies the data in blocks, optionally carrying out conversions.
+
+Unlike the other commands of Unix systems, the parameters are all in the form name=value (without spaces neither before nor after the "=" sign) and can be specified in any order.
+
+The general syntax is:
+
+    dd [OPERAND]...
+
+OPERAND and DESCRIPTION
+
+    Copy a file, converting and formatting according to the operands:
+
+    if=FILE       ->   read from FILE instead of stdin
+
+    of=FILE       ->   write to FILE instead of stdout
+
+    bs=BYTES      ->   read and write up to BYTES bytes at a time (default: 512)
+
+    count=BLOCKS  ->   copy only N input blocks
+	
+    conv=CONVS    ->   convert the file as per the comma separated symbol list
+
+    Each CONV symbol may be:
+
+    lcase  	  ->   change upper case to lower case
+
+    ucase         ->   change lower case to upper case
+
+OUTPUT
+
+   record in:	  ->   number of complete block transfered in input + number of partial block transfered in input
+   
+   record out:    ->   number of complete block transfered in output + number of partial block transfered in output
+
+EXAMPLES
+
+   dd if=input_file of=output_file bs=3
+
+   dd if=input_file of=output_file2 bs=2 count=3
+
+   dd if=input_file of=output_file3 bs=10 conv=ucase
+
+   dd if=input_file of=output_file4 bs=3 count=4 conv=lcase
+
+   dd if=input_file of=output_file5 count=4 conv=ucase  -> bs is not specified so dd considers 512 bytes by default
+
