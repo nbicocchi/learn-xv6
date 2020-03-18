@@ -8,6 +8,7 @@ Marco Malagoli, File system checksum, 4
 Jacopo Scannella, XV6 Disassembler, 4
 Claudia de Michele, Disk cache paging, 4
 D'Iorio Rosa, Disk cache paging, 4
+Lorenzo Pintaudi, Threads, 4
 Giacomo Capitani, ML Feedback Queue, 3
 Camilla Memola, Tree command, 3
 Fabio Leanti, history e man, 3
