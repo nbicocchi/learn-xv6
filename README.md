@@ -19,12 +19,14 @@ For running xv6:
 * (for quitting the emulator) ctrl-a x
 
 ## Web
-https://pdos.csail.mit.edu/6.828/2019/xv6.html
-https://www.youtube.com/watch?v=k51934LHz3k&t=25s&index=1&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun
+* https://pdos.csail.mit.edu/6.828/2019/xv6.html
 
 ## Books
-xv6 a simple, Unix-like teaching operating system; Russ Cox, Frans Kaashoek, Robert Morris
-Modern Operating Systems (4th Edition); Andrew S. Tanenbaum
+* xv6 a simple, Unix-like teaching operating system; Russ Cox, Frans Kaashoek, Robert Morris
+* Modern Operating Systems (4th Edition); Andrew S. Tanenbaum
+
+## Video
+* [YouTube](https://www.youtube.com/watch?v=k51934LHz3k&t=25s&index=1&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun)
 
 ## Slides, code examples
 Slides, books, and code examples can be found here and downloaded using git:
