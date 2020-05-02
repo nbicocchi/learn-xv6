@@ -1,9 +1,8 @@
-# Operating Systems MSc (DIEF, UNIMORE) #
+# Operating Systems MSc (DIEF, UNIMORE)
 This course deals with the design and implementation of operating systems. 
 The main topics include: boot-up sequence, memory management, processes, file systems and inter process communication in modern operating systems. The course is based on the Xv6 operating system.
 
-
-## xv6 ##
+## Software
 Xv6 is a teaching operating system developed in the summer of 2006 for MIT's operating systems course, 6.828: Operating System Engineering. We use it because of its beauty and simplicity. To successfully run it, you need to install some packages (tested on Ubuntu 18.04):
 
 * $ sudo apt-get install git qemu build-essential 
@@ -19,31 +18,24 @@ For running xv6:
 * $ make qemu-nox
 * (for quitting the emulator) ctrl-a x
 
+## Web
+https://pdos.csail.mit.edu/6.828/2019/xv6.html
+https://www.youtube.com/watch?v=k51934LHz3k&t=25s&index=1&list=PLEJxKK7AcSEGPOCFtQTJhOElU44J_JAun
 
-## Course material ##
-The whole material, comprising slides and code examples, can be downloaded using git:
+## Books
+xv6 a simple, Unix-like teaching operating system; Russ Cox, Frans Kaashoek, Robert Morris
+Modern Operating Systems (4th Edition); Andrew S. Tanenbaum
 
-* git clone https://github.com/nbicocchi/operatingsystemsmsc.git
+## Slides, code examples
+Slides, books, and code examples can be found here and downloaded using git:
+
+> $ git clone https://github.com/nbicocchi/operatingsystemsmsc.git
 
 Both slides and code examples might be updated or bug-fixed during the course. At any time, for downloading the latest version, go the course material directory (on your pc) and use:
 
-* $ git pull
+> $ git pull (in case of errors: git reset --hard; git pull)
 
-
-## Running labs ##
-The course is organized around a number of patches for xv6. They are placed within the /code/ and /code/opt/ folders. Each patch has its own README.md for documentation and contains only the files that have been modified from xv6 stock. For running patches the script generate.sh can be used as described below.
-
-```
-usage: ./generate.sh -l lab [-s subdir] [-f flags] [-n] [-c]
-This tool creates a copy of xv6-public/, patches it with a selected lab folder, and excutes the qemu emulator
--l The lab to be built and executed
--s The subdir (withitn each lab) to be built. Default=end
--f Flags to be passed to the compiler. Default=none
--n Skip the creation of a copy of xv6-public/ and patching. Useful for development. Default=false
--c Clean all patched copies of xv6
-```
-
-## Modules ##
+## Modules
 [01U] Basic commands
 
 * xv6 functionalities, concepts, internal organization
@@ -103,7 +95,20 @@ This tool creates a copy of xv6-public/, patches it with a selected lab folder, 
 * Increasing the maximum file length using double indirection
 * Increasing the maximum file length using triple indirection
 
-## Course Rules ##
+## Labs
+The course is organized around a number of patches for xv6. They are placed within the /code/ and /code/opt/ folders. Each patch has its own README.md for documentation and contains only the files that have been modified from xv6 stock. For running patches the script generate.sh can be used as described below.
+
+```
+usage: ./generate.sh -l lab [-s subdir] [-f flags] [-n] [-c]
+This tool creates a copy of xv6-public/, patches it with a selected lab folder, and excutes the qemu emulator
+-l The lab to be built and executed
+-s The subdir (withitn each lab) to be built. Default=end
+-f Flags to be passed to the compiler. Default=none
+-n Skip the creation of a copy of xv6-public/ and patching. Useful for development. Default=false
+-c Clean all patched copies of xv6
+```
+
+## Exam
 For their project students can choose any topic about xv6 they like. As an inspiration, it is possible to implement an improved shell, missing user commands, or new/better functionalities within the kernel.
 
 The project has to be delivered in the same format of labs (see code/). The command: 
@@ -113,7 +118,3 @@ $ ./generate.sh -l your_project_dir
 must generate a modified (and working!) version of xv6.
 
 
-## Course Books ##
-* xv6: a simple, Unix-like teaching operating system; Russ Cox, Frans Kaashoek, Robert Morris 
-
-* Modern Operating Systems; Andrew S. Tanenbaum 
