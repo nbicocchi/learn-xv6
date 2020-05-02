@@ -113,10 +113,10 @@ This tool creates a copy of xv6-public/, patches it with a selected lab folder, 
 ## Exam
 For their project students can choose any topic about xv6 they like. As an inspiration, it is possible to implement an improved shell, missing user commands, or new/better functionalities within the kernel.
 
-The project has to be delivered in the same format of labs (see code/). The command: 
+The project has to be delivered in the same format of labs (see code/). The command below must generate a modified (and working!) version of xv6.
 
-$ ./generate.sh -l your_project_dir 
+> $ ./generate.sh -l your_project_dir 
 
-must generate a modified (and working!) version of xv6.
+
 
 
