@@ -7,10 +7,6 @@ Xv6 is a teaching operating system developed in the summer of 2006 for MIT's ope
 
 * $ sudo apt-get install git qemu build-essential 
 
-Despite books and code have already been included into this repository, you can access the full xv6 documentation at the following url:
-
-* https://pdos.csail.mit.edu/6.828/2017/xv6.html
-
 For running xv6:
 
 * $ cd xv6-public
