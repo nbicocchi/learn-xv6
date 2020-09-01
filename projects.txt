@@ -17,6 +17,7 @@ Fabio Leonardi, Scheduler MLFQ, 3
 Luca Casarin, Scheduler DML, 3
 Valentina Neri, dd command, 3
 Mattia Masella, Disk cache paging, 2
+Lorenzo Ferrari, Path variable, 1
 
 ## 2018 ##
 Andrea Baraldi, Scheduler O(1), 4
